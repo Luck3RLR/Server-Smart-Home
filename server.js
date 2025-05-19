@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const path = require('path');
 const DATA_FILE = path.join(__dirname, 'data.json');
 const cors = require('cors');
-app.use(cors()); 
+app.use(cors());
 
 const timers = {
     motionDynamicOnTimeout: null,
@@ -54,11 +54,9 @@ function recordSensorHistory(sensor, state) {
     }
 }
 
-// Убираем автоматическое обновление светильников
 function updateSensors() {
     const data = loadData();
 
-    // Обновляем температуру и влажность
     let tempChange = (Math.random() * 0.2) - 0.1;
     let newTemp = +(data.temperature.current + tempChange).toFixed(1);
     if (newTemp < 18) newTemp = 18.0;
@@ -168,7 +166,6 @@ app.post('/update-light', (req, res) => {
         const { lightId, state } = req.body;
         const data = loadData();
 
-        // Проверяем, существует ли такая лампа
         if (!data.lights[lightId]) {
             return res.status(404).json({ error: `Лампа ${lightId} не найдена` });
         }
@@ -176,13 +173,10 @@ app.post('/update-light', (req, res) => {
         const light = data.lights[lightId];
         const previousState = light.state;
 
-        // Если состояние изменилось
         if (previousState !== state) {
-            // Если включаем лампу
             if (state === true) {
                 light.timerStart = Date.now();
             }
-            // Если выключаем лампу и она была включена
             else if (previousState === true) {
                 const duration = Date.now() - light.timerStart;
                 light.history.push({
