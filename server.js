@@ -13,6 +13,12 @@ const timers = {
     motionDynamicOffTimeout: null,
 };
 
+app.use((req, res, next) => {
+    res.removeHeader('X-Powered-By');
+    res.removeHeader('Server');
+    next();
+});
+
 function getDefaultData() {
     return {
         lights: {
@@ -207,3 +213,14 @@ app.post('/update-light', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Сервер запущен на ${PORT}`);
 });
+
+/*
+Сервер работает. Маршруты: /current (текущие данные), /history (история), /generate (обновить),
+/update-light (куда приходит ответ POST) прверить можно на Postman 
+Body
+raw json
+{
+    "lightId": "1",
+    "state": true
+}
+*/
