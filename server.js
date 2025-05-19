@@ -181,6 +181,36 @@ app.get('/', (req, res) => {
     res.send('Сервер работает. Маршруты: /current (текущие данные), /history (история), /generate (обновить)');
 });
 
+
+app.post('/update-light', (req, res) => {
+    const { lightId, state } = req.body;
+    const data = loadData();
+
+    if (data.lights[lightId]) {
+        const light = data.lights[lightId];
+
+        if (state === true && light.state === false) {
+            light.timerStart = Date.now();
+        }
+        else if (state === false && light.state === true && light.timerStart !== null) {
+            const duration = Date.now() - light.timerStart;
+            light.history.push({
+                timestamp: Date.now(),
+                duration: duration
+            });
+            light.timerStart = null;
+        }
+
+        light.state = state;
+        recordSensorHistory(light, state);
+        saveData(data);
+        res.json({ success: true });
+    } else {
+        res.status(404).json({ error: 'Light not found' });
+    }
+});
+
+
 app.listen(PORT, () => {
     console.log(`Сервер запущен на ${PORT}`);
 });
