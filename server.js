@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const path = require('path');
 const DATA_FILE = path.join(__dirname, 'data.json');
 const cors = require('cors');
-app.use(cors());
+app.use(cors()); 
 
 const timers = {
     motionDynamicOnTimeout: null,
@@ -54,27 +54,27 @@ function recordSensorHistory(sensor, state) {
     }
 }
 
+// Убираем автоматическое обновление светильников
 function updateSensors() {
     const data = loadData();
 
-    // Обновляем светильники
-    for (let i = 1; i <= 6; i++) {
-        const light = data.lights[i];
-        const newState = Math.random() > 0.5;
+    // Обновляем температуру и влажность
+    let tempChange = (Math.random() * 0.2) - 0.1;
+    let newTemp = +(data.temperature.current + tempChange).toFixed(1);
+    if (newTemp < 18) newTemp = 18.0;
+    if (newTemp > 26) newTemp = 26.0;
+    if (newTemp !== data.temperature.current) {
+        data.temperature.current = newTemp;
+        data.temperature.history.push({ timestamp: Date.now(), value: newTemp });
+    }
 
-        if (light.state !== newState) {
-            if (newState) {
-                light.timerStart = Date.now();
-            } else {
-                if (light.timerStart !== null) {
-                    const duration = Date.now() - light.timerStart;
-                    light.history.push(duration);
-                    light.timerStart = null;
-                }
-            }
-            light.state = newState;
-            recordSensorHistory(light, newState);
-        }
+    let humidityChange = (Math.random() * 6) - 3;
+    let newHumidity = +(data.humidity.current + humidityChange).toFixed(1);
+    if (newHumidity < 30) newHumidity = 30.0;
+    if (newHumidity > 80) newHumidity = 80.0;
+    if (newHumidity !== data.humidity.current) {
+        data.humidity.current = newHumidity;
+        data.humidity.history.push({ timestamp: Date.now(), value: newHumidity });
     }
 
     if (data.motionSensorStatic.state !== false) {
@@ -103,24 +103,6 @@ function updateSensors() {
                 timers.motionDynamicOffTimeout = null;
             }, activeDuration);
         }, interval);
-    }
-
-    let tempChange = (Math.random() * 0.2) - 0.1;
-    let newTemp = +(data.temperature.current + tempChange).toFixed(1);
-    if (newTemp < 18) newTemp = 18.0;
-    if (newTemp > 26) newTemp = 26.0;
-    if (newTemp !== data.temperature.current) {
-        data.temperature.current = newTemp;
-        data.temperature.history.push({ timestamp: Date.now(), value: newTemp });
-    }
-
-    let humidityChange = (Math.random() * 6) - 3;
-    let newHumidity = +(data.humidity.current + humidityChange).toFixed(1);
-    if (newHumidity < 30) newHumidity = 30.0;
-    if (newHumidity > 80) newHumidity = 80.0;
-    if (newHumidity !== data.humidity.current) {
-        data.humidity.current = newHumidity;
-        data.humidity.history.push({ timestamp: Date.now(), value: newHumidity });
     }
 
     saveData(data);
@@ -181,43 +163,53 @@ app.get('/', (req, res) => {
     res.send('Сервер работает. Маршруты: /current (текущие данные), /history (история), /generate (обновить)');
 });
 
-
 app.post('/update-light', (req, res) => {
-    const { lightId, state } = req.body;
-    const data = loadData();
+    try {
+        const { lightId, state } = req.body;
+        const data = loadData();
 
-    if (data.lights[lightId]) {
+        // Проверяем, существует ли такая лампа
+        if (!data.lights[lightId]) {
+            return res.status(404).json({ error: `Лампа ${lightId} не найдена` });
+        }
+
         const light = data.lights[lightId];
+        const previousState = light.state;
 
-        if (state === true && light.state === false) {
-            light.timerStart = Date.now();
-        }
-        else if (state === false && light.state === true && light.timerStart !== null) {
-            const duration = Date.now() - light.timerStart;
-            light.history.push({
-                timestamp: Date.now(),
-                duration: duration
-            });
-            light.timerStart = null;
+        // Если состояние изменилось
+        if (previousState !== state) {
+            // Если включаем лампу
+            if (state === true) {
+                light.timerStart = Date.now();
+            }
+            // Если выключаем лампу и она была включена
+            else if (previousState === true) {
+                const duration = Date.now() - light.timerStart;
+                light.history.push({
+                    timestamp: Date.now(),
+                    duration: duration
+                });
+                light.timerStart = null;
+            }
+
+            light.state = state;
+            recordSensorHistory(light, state);
+            saveData(data);
         }
 
-        light.state = state;
-        recordSensorHistory(light, state);
-        saveData(data);
-        res.json({ success: true });
-    } else {
-        res.status(404).json({ error: 'Light not found' });
+        res.json({
+            success: true,
+            lightId: lightId,
+            newState: state,
+            history: light.history
+        });
+
+    } catch (error) {
+        console.error('Ошибка при обновлении лампы:', error);
+        res.status(500).json({ error: 'Внутренняя ошибка сервера' });
     }
 });
-
 
 app.listen(PORT, () => {
     console.log(`Сервер запущен на ${PORT}`);
 });
-
-
-/*http://localhost:3000/history
-
-http://localhost:3000/current
-
-метод пост быстрое обновление Postman http://localhost:3000/generate*/
