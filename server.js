@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello Vercel!');
+    res.send('Сервер работает. Маршруты: /current (текущие данные), /history (история), /generate (обновить)');
 });
 
 function getDefaultData() {
