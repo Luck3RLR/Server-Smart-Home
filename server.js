@@ -8,13 +8,12 @@ const DATA_FILE = path.join(__dirname, 'data.json');
 const cors = require('cors');
 app.use(cors());
 
+const timers = {
+    motionDynamicOnTimeout: null,
+    motionDynamicOffTimeout: null,
+};
 
 
-app.use((req, res, next) => {
-    res.removeHeader('X-Powered-By');
-    res.removeHeader('Server');
-    next();
-});
 
 function getDefaultData() {
     return {
