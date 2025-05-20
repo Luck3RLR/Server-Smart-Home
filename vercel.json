@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "functions": {
-    "api/server.js": {
-      "runtime": "nodejs18.x",
-      "memory": 1024,
-      "maxDuration": 30
+  "builds": [
+    {
+      "src": "api/server.js",
+      "use": "@vercel/node@2.15.4"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/(.*)",
