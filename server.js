@@ -229,7 +229,3 @@ raw json
     "state": true
 }
 */
-    "lightId": "1",
-    "state": true
-}
-*/
