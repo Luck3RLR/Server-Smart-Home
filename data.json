@@ -1,0 +1,411 @@
+{
+  "lights": {
+    "1": {
+      "state": true,
+      "timerStart": 1747618000409,
+      "history": [
+        {
+          "timestamp": 1747614580277,
+          "state": true
+        },
+        360028,
+        {
+          "timestamp": 1747614940305,
+          "state": false
+        },
+        {
+          "timestamp": 1747615999350,
+          "state": true
+        },
+        20995,
+        {
+          "timestamp": 1747616020345,
+          "state": false
+        },
+        {
+          "timestamp": 1747616256542,
+          "state": true
+        },
+        123808,
+        {
+          "timestamp": 1747616380350,
+          "state": false
+        },
+        {
+          "timestamp": 1747616693367,
+          "state": true
+        },
+        1127042,
+        {
+          "timestamp": 1747617820409,
+          "state": false
+        },
+        {
+          "timestamp": 1747618000409,
+          "state": true
+        }
+      ]
+    },
+    "2": {
+      "state": true,
+      "timerStart": 1747617820409,
+      "history": [
+        {
+          "timestamp": 1747614580277,
+          "state": true
+        },
+        360028,
+        {
+          "timestamp": 1747614940305,
+          "state": false
+        },
+        {
+          "timestamp": 1747615660335,
+          "state": true
+        },
+        720015,
+        {
+          "timestamp": 1747616380350,
+          "state": false
+        },
+        {
+          "timestamp": 1747617820409,
+          "state": true
+        }
+      ]
+    },
+    "3": {
+      "state": true,
+      "timerStart": 1747617460395,
+      "history": [
+        {
+          "timestamp": 1747614940305,
+          "state": true
+        },
+        1080040,
+        {
+          "timestamp": 1747616020345,
+          "state": false
+        },
+        {
+          "timestamp": 1747616380350,
+          "state": true
+        },
+        720030,
+        {
+          "timestamp": 1747617100380,
+          "state": false
+        },
+        {
+          "timestamp": 1747617460395,
+          "state": true
+        }
+      ]
+    },
+    "4": {
+      "state": false,
+      "timerStart": null,
+      "history": [
+        {
+          "timestamp": 1747614580277,
+          "state": true
+        },
+        360028,
+        {
+          "timestamp": 1747614940305,
+          "state": false
+        },
+        {
+          "timestamp": 1747615300326,
+          "state": true
+        },
+        1080024,
+        {
+          "timestamp": 1747616380350,
+          "state": false
+        }
+      ]
+    },
+    "5": {
+      "state": true,
+      "timerStart": 1747617820409,
+      "history": [
+        {
+          "timestamp": 1747614580277,
+          "state": true
+        },
+        1440068,
+        {
+          "timestamp": 1747616020345,
+          "state": false
+        },
+        {
+          "timestamp": 1747616380350,
+          "state": true
+        },
+        720030,
+        {
+          "timestamp": 1747617100380,
+          "state": false
+        },
+        {
+          "timestamp": 1747617820409,
+          "state": true
+        }
+      ]
+    },
+    "6": {
+      "state": false,
+      "timerStart": null,
+      "history": [
+        {
+          "timestamp": 1747614940305,
+          "state": true
+        },
+        360021,
+        {
+          "timestamp": 1747615300326,
+          "state": false
+        },
+        {
+          "timestamp": 1747615660335,
+          "state": true
+        },
+        720015,
+        {
+          "timestamp": 1747616380350,
+          "state": false
+        },
+        {
+          "timestamp": 1747616740374,
+          "state": true
+        },
+        360006,
+        {
+          "timestamp": 1747617100380,
+          "state": false
+        },
+        {
+          "timestamp": 1747617460395,
+          "state": true
+        },
+        540014,
+        {
+          "timestamp": 1747618000409,
+          "state": false
+        }
+      ]
+    }
+  },
+  "motionSensorStatic": {
+    "state": false,
+    "history": []
+  },
+  "gasSensor": {
+    "state": false,
+    "history": []
+  },
+  "motionSensorDynamic": {
+    "state": false,
+    "history": [
+      {
+        "timestamp": 1747614865931,
+        "state": true
+      },
+      {
+        "timestamp": 1747614867087,
+        "state": false
+      },
+      {
+        "timestamp": 1747615184073,
+        "state": true
+      },
+      {
+        "timestamp": 1747615188430,
+        "state": false
+      },
+      {
+        "timestamp": 1747615598155,
+        "state": true
+      },
+      {
+        "timestamp": 1747615599452,
+        "state": false
+      },
+      {
+        "timestamp": 1747615895994,
+        "state": true
+      },
+      {
+        "timestamp": 1747615898026,
+        "state": false
+      },
+      {
+        "timestamp": 1747616219929,
+        "state": true
+      },
+      {
+        "timestamp": 1747616223941,
+        "state": false
+      },
+      {
+        "timestamp": 1747616629157,
+        "state": true
+      },
+      {
+        "timestamp": 1747616630448,
+        "state": false
+      },
+      {
+        "timestamp": 1747616928650,
+        "state": true
+      },
+      {
+        "timestamp": 1747616931681,
+        "state": false
+      },
+      {
+        "timestamp": 1747617397862,
+        "state": true
+      },
+      {
+        "timestamp": 1747617402830,
+        "state": false
+      },
+      {
+        "timestamp": 1747617734494,
+        "state": true
+      },
+      {
+        "timestamp": 1747617736455,
+        "state": false
+      },
+      {
+        "timestamp": 1747619532170,
+        "state": true
+      },
+      {
+        "timestamp": 1747619534454,
+        "state": false
+      },
+      {
+        "timestamp": 1747626170531,
+        "state": true
+      },
+      {
+        "timestamp": 1747626171706,
+        "state": false
+      },
+      {
+        "timestamp": 1747626633110,
+        "state": true
+      },
+      {
+        "timestamp": 1747626636861,
+        "state": false
+      }
+    ]
+  },
+  "temperature": {
+    "current": 22.3,
+    "history": [
+      {
+        "timestamp": 1747616020345,
+        "value": 22.1
+      },
+      {
+        "timestamp": 1747616740375,
+        "value": 22.2
+      },
+      {
+        "timestamp": 1747617100380,
+        "value": 22.3
+      },
+      {
+        "timestamp": 1747617460395,
+        "value": 22.2
+      },
+      {
+        "timestamp": 1747618000409,
+        "value": 22.3
+      },
+      {
+        "timestamp": 1747619293923,
+        "value": 22.2
+      },
+      {
+        "timestamp": 1747619653941,
+        "value": 22.3
+      }
+    ]
+  },
+  "humidity": {
+    "current": 54,
+    "history": [
+      {
+        "timestamp": 1747614580278,
+        "value": 48
+      },
+      {
+        "timestamp": 1747614940305,
+        "value": 49.1
+      },
+      {
+        "timestamp": 1747615300326,
+        "value": 50.7
+      },
+      {
+        "timestamp": 1747615660336,
+        "value": 52.4
+      },
+      {
+        "timestamp": 1747616020345,
+        "value": 54.5
+      },
+      {
+        "timestamp": 1747616380350,
+        "value": 53.4
+      },
+      {
+        "timestamp": 1747616740375,
+        "value": 54.3
+      },
+      {
+        "timestamp": 1747617100380,
+        "value": 55.3
+      },
+      {
+        "timestamp": 1747617460395,
+        "value": 54.1
+      },
+      {
+        "timestamp": 1747617820409,
+        "value": 53.5
+      },
+      {
+        "timestamp": 1747618000409,
+        "value": 55.6
+      },
+      {
+        "timestamp": 1747619293923,
+        "value": 56
+      },
+      {
+        "timestamp": 1747619653941,
+        "value": 55.5
+      },
+      {
+        "timestamp": 1747626350541,
+        "value": 55.9
+      },
+      {
+        "timestamp": 1747626710561,
+        "value": 53
+      },
+      {
+        "timestamp": 1747626890573,
+        "value": 54
+      }
+    ]
+  }
+}
