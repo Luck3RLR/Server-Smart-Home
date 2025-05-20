@@ -168,7 +168,7 @@ app.post('/generate', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Сервер работает. Маршруты: /current (текущие данные), /history (история), /generate (обновить)');
+    res.send('Сервер працює. Маршрути: /current (поточні дані), /history (історія), /generate (оновити)');
 });
 
 app.post('/update-light', (req, res) => {
@@ -220,8 +220,8 @@ app.listen(PORT, () => {
 
 module.exports = app;
 /*
-Сервер работает. Маршруты: /current (текущие данные), /history (история), /generate (обновить),
-/update-light (куда приходит ответ POST) прверить можно на Postman 
+Сервер працює. Маршрути: /current (поточні дані), /history (історія), /generate (оновити),
+/update-light (куди приходить відповідь POST) перевірити можна на Postman.
 Body
 raw json
 {
