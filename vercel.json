@@ -8,6 +8,24 @@
   ],
   "routes": [
     {
+      "src": "/current",
+      "dest": "api/server.js"
+    },
+    {
+      "src": "/history",
+      "dest": "api/server.js"
+    },
+    {
+      "src": "/update-light",
+      "methods": ["POST"],
+      "dest": "api/server.js"
+    },
+    {
+      "src": "/generate",
+      "methods": ["POST"],
+      "dest": "api/server.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "api/server.js"
     }
