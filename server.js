@@ -20,7 +20,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Сервер работает. Маршруты: /current (текущие данные), /history (история), /generate (обновить)');
+    res.send('Сервер працює. Маршрути: /current (поточні дані), /history (історія), /generate (оновити)
+             ');
 });
 
 function getDefaultData() {
