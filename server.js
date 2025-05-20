@@ -20,8 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Сервер працює. Маршрути: /current (поточні дані), /history (історія), /generate (оновити)
-             ');
+    res.send('Сервер працює. Маршрути: /current (поточні дані), /history (історія), /generate (оновити)');
 });
 
 function getDefaultData() {
@@ -216,7 +215,7 @@ app.post('/update-light', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+    console.log(`Example app listening on port ${PORT}`)
 })
 
 module.exports = app;
@@ -226,6 +225,10 @@ module.exports = app;
 Body
 raw json
 {
+    "lightId": "1",
+    "state": true
+}
+*/
     "lightId": "1",
     "state": true
 }
