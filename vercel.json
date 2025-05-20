@@ -3,7 +3,6 @@
   "functions": {
     "api/server.js": {
       "runtime": "nodejs18.x",
-      "handler": "server.js",
       "memory": 1024,
       "maxDuration": 30
     }
